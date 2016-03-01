@@ -1,0 +1,168 @@
+//Uses School Database to create a table called "Students". 
+//Note all of the data types for the columns are not null, so
+//a value is required for each column.  
+
+USE School 
+CREATE TABLE Students
+(ID int NOT NULL, FirstName varchar(50) NOT NULL, 
+LastName varchar(50) NOT NULL, 
+Grade int NOT NULL)
+
+//Uses School Database to insert student records into the Students table.
+
+USE School
+INSERT INTO Students
+(ID, FirstName, LastName, Grade)
+VALUES(15, 'John', 'Smith', 9),
+      (24, 'William', 'Bessel', 10),
+      (3, 'Amanda', 'Towers', 11),
+      (49, 'Ben', 'Younger', 12),
+      (58, 'Kyle', 'Carter', 10),
+      (62, 'Tiffany', 'Mesa', 11),
+      (70, 'Jack', 'Robbins', 9),
+      (89, 'Leslie', 'Warren', 12),
+      (9, 'Malcolm', 'Catz', 10),
+      (1, 'Victor', 'Freund', 11),
+      (31, 'Haley', 'Shoe', 9),
+      (90, 'Ian', 'Davis', 12),
+      (12, 'Chester', 'Allen', 11),
+      (27, 'Tang', 'Ho', 10),
+      (44, 'Uber', 'Gangs', 9),
+      (51,'Kandi', 'Lowes', 12),
+      (60, 'Terry', 'Johnson', 11),
+      (84, 'Keith', 'Zanes', 10),
+      (77, 'Noel', 'Bethel', 9),
+      (39, 'Greg', 'Imus', 12),
+      (22, 'Helen', 'Hills', 10),
+      (30, 'Jeb', 'Worthel', 11),
+      (95, 'Brad', 'Pennington', 9)  
+
+Check out these sample queries.  
+
+//Selects all students and places the first and last name of
+//each student in first column and grade level in second column.
+
+SELECT
+FirstName + ' ' + LastName AS 'Student Name',
+Grade AS 'Grade Level'
+FROM Students
+
+//Similar query as before, but orders the students 
+//by grade level in ascending order.
+
+SELECT
+FirstName + ' ' + LastName AS 'Student Name',
+Grade AS 'Grade Level'
+FROM Students
+ORDER BY [Grade Level] ASC
+
+//Selects all 10th grade students, showing their student ID number
+//in first column and their student name in second column.
+
+SELECT 
+ID AS 'Student ID',
+FirstName + ' ' + LastName AS 'Student Name'
+FROM Students
+WHERE Grade = 10
+
+//Selects students whose ID numbers are between 10 and 40,
+//displaying their full name and grade level.
+//Student records are ordered by their last name.  
+
+SELECT 
+FirstName + ' ' + LastName AS 'Student Name',
+Grade
+FROM Students
+WHERE ID >= 10 AND ID <= 40
+ORDER BY LastName
+
+//Selects all columns from Students table,
+//displaying the juniors and seniors in descending order.
+
+SELECT *
+FROM Students
+WHERE Grade IN (11, 12)
+ORDER BY Grade DESC 
+
+//Selects the first name, last name, grade level of students
+//whose last name begins with the letter W.
+
+SELECT 
+FirstName,
+LastName,
+Grade
+FROM Students
+WHERE LastName LIKE 'W%'
+
+//Selects all students in alphabetical order whose last names are between the letters A and F.
+
+SELECT
+FirstName + ' ' + LastName AS 'Student Name'
+FROM Students
+WHERE LastName BETWEEN 'A' AND 'F'
+ORDER BY LastName
+
+//Selects the first five seniors according to their first names.  
+
+SELECT 
+TOP 5
+FirstName, 
+LastName
+FROM Students
+WHERE Grade = 12
+ORDER BY FirstName
+
+//Counts the total number of students in the Students table.
+
+SELECT
+COUNT(*) AS 'Number of Students'
+FROM Students
+
+
+Try these exercises on your own.
+
+EXERCISES:
+
+1.  Write a query to display all freshman and sophomore students, displaying all columns.
+
+2.  Write a query to display all junior students by their last name in alphabetical order.  
+    You should show the student ID number in the first column named as "Student ID" and 
+    the full students' names in the second column named as "Student Name".  
+
+3.  Write a query to count the total number of seniors.  Name this single column as "Number of Seniors."
+
+4.  Write a query to display all students whose first name begins with the letter M.  
+    Display all columns except the ID column.  
+
+5.  Write a query to find the first student in alphabetical order whose last name begins with the letter H.
+    Who is the student and what is their grade level?  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
