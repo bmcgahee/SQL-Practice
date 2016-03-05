@@ -1,0 +1,86 @@
+//Using the School database 
+//to create a table called Courses
+//and inserting students' names, classes, courses, and course grades.
+
+USE School
+
+CREATE TABLE Courses
+(Name varchar(50) NOT NULL, Class varchar(25) NOT NULL, Course varchar(50) NOT NULL, Grade int NOT NULL)
+
+INSERT INTO Courses(Name, Class, Course, Grade)
+VALUES('Jack Bridges', 'Freshman', 'Trigonometry', 85),
+	  ('Hannah Smart', 'Junior', 'Statistics', 91),
+	  ('Tiffany Messing', 'Sophomore', 'Calculus', 73),
+	  ('Ben Tilton', 'Senior', 'Algebra', 80),
+	  ('Kyle Wilkins', 'Junior', 'Statistics', 94),
+	  ('Lane Remington', 'Freshman', 'Trigonometry', 78),
+	  ('Jenny Johns', 'Sophomore', 'Calculus', 66),
+	  ('Ursula Zane', 'Junior', 'Algebra', 59),
+	  ('Eric Kleine', 'Senior', 'Statistics', 87),
+	  ('Fulton Harris', 'Freshman', 'Calculus', 92),
+	  ('Jodie Arkes', 'Sophomore', 'Trigonometry', 84),
+	  ('Davis Miles', 'Junior', 'Statistics', 79),
+	  ('Ellen Opus', 'Senior', 'Calculus', 55),
+	  ('Bent Mars', 'Freshman', 'Algebra', 97),
+	  ('Match Light', 'Sophomore', 'Trigonometry', 90),
+	  ('Patricia Hills', 'Junior', 'Calculus', 93),
+	  ('Ian Smith', 'Senior', 'Algebra', 83),
+	  ('Chester Riggs', 'Freshman', 'Statistics', 70),
+	  ('Adam Preston', 'Sophomore', 'Trigonometry', 96),
+	  ('Johnny Gauge', 'Junior', 'Calculus', 88),
+	  ('Omar Shores', 'Freshman', 'Algebra', 55),
+	  ('Allison Quail', 'Senior', 'Calculus', 85),
+	  ('Gregg Roberts', 'Sophomore', 'Statistics', 72)
+
+Below are some sample queries against the Courses table.
+
+//Displays all columns in the Courses table.
+SELECT *
+FROM Courses 
+
+//Displays the roster of students who are in the Algebra course.
+SELECT
+Name
+FROM Courses
+WHERE Course = 'Algebra'
+
+//Displays the roster of students in alphabetical order by first name who are in the Statistics course.
+SELECT
+Name
+FROM Courses
+WHERE Course = 'Statistics'
+ORDER BY Name
+
+//Displays the average grade in the calculus course.  
+SELECT
+AVG(Grade) AS 'Average Grade'
+FROM Courses
+WHERE Course = 'Calculus'
+
+//Displays the student and grade who received the highest score in the Algebra class.
+SELECT
+TOP 1
+Name,
+Grade
+FROM Courses
+WHERE Course = 'Algebra'
+ORDER BY Grade DESC
+
+Here are some exercises to try on your own.  
+
+EXERCISES:
+
+1.  Write a query to find out how many students are taking a trigonometry course.  
+
+2.  Write a query to find out which students received a passing grade in the algebra course.  
+    Assume that a passing grade is 70% or higher.  Display both the student names and their grades.  
+
+3.  Write a query to find out who received the lowest grade in the calculus course.  Display the student name and their grade.
+
+4.  Write a query to find out the average score in the statistics course.  Display the column as "Average Grade".  
+
+5.  Write a query to find out who got an A in the calculus course.  Display student names and grades from highest to lowest.  
+
+
+  
+
