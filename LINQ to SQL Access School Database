@@ -1,0 +1,23 @@
+
+//This event fires when the Get Grade button is clicked.
+protected void getGrade_Click(object sender, EventArgs e)
+        {
+            using (SchoolDataContext Data = new SchoolDataContext()) //Using the SchoolDataContext LINQ class.
+            {
+                //Query determine if the grade for a student exists provided the 
+                //student's first name and grade type (homework, quiz, or exam).
+                Grade MyGrade = Data.Grades
+                    .SingleOrDefault(Grade1 => Grade1.FirstName == studentTextBox.Text && Grade1.GradeType == gradeTypeTextBox.Text);
+                //Case for when the record is non-existent.  
+                if(MyGrade == null)
+                {
+                    gradeLabel.Text = "Invalid entry.  Please enter a valid student name and grade type.";
+                }
+                //Displays student's grade.  
+                else
+                {
+                    gradeLabel.Text = MyGrade.Grade1.ToString();
+                }
+                
+            }
+        }
