@@ -1,0 +1,51 @@
+Solutions to Exercises (Students Table):
+
+1. Write a query to display all freshman and sophomore students, displaying all columns.
+
+SELECT *
+FROM Students
+WHERE Grade IN (9, 10)
+
+2. Write a query to display all junior students by their last name in alphabetical order.  
+   You should show the student ID number in the first column named as "Student ID" and 
+   the full students' names in the second column named as "Student Name". 
+
+SELECT
+ID AS 'Student ID'
+FirstName + ' ' + LastName AS 'Student Name'
+FROM Students
+WHERE Grade = 11
+ORDER BY 'Student Name'
+
+3. Write a query to count the total number of seniors.  Name this single column as "Number of Seniors."
+
+SELECT
+COUNT(*) AS 'Number of Seniors'
+FROM Students
+WHERE Grade = 12
+
+You should get 5 seniors.
+
+4. Write a query to display all students whose first name begins with the letter M.  
+   Display all columns except the ID column.  
+
+SELECT 
+FirstName AS 'First Name',
+LastName AS 'Last Name',
+Grade 
+FROM Students
+WHERE FirstName LIKE 'M%'
+
+5.  Write a query to find the first student in alphabetical order whose last name begins with the letter H.
+    Who is the student and what is their grade level?  
+
+SELECT 
+TOP 1
+FirstName + ' ' + LastName AS 'Student Name',
+Grade
+FROM Students
+WHERE LastName LIKE 'H%'
+ORDER BY LastName
+
+You should get Helen Hills in 10th grade.
+
