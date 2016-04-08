@@ -1,0 +1,60 @@
+Solutions to Exercises (Courses Table):
+
+1.  Write a query to find out how many students are taking a trigonometry course.
+
+SELECT
+COUNT(*)
+FROM Courses
+WHERE Course = 'Trigonometry'  
+
+5 students are taking trigonometry.
+
+2.  Write a query to find out which students received a passing grade in the algebra course.  
+    Assume that a passing grade is 70% or higher.  Display both the student names and their grades.  
+
+SELECT
+Name,
+Grade
+FROM Courses
+WHERE Course = 'Algebra' AND Grade >= 70
+
+Ben Tilton - 80 
+Bent Mars - 97
+Ian Smith - 83 
+
+These are the students who passed algebra.
+
+3.  Write a query to find out who received the lowest grade in the calculus course.  Display the student name and their grade.
+
+SELECT
+TOP 1 
+Name,
+Grade
+FROM Courses
+WHERE Course = 'Calculus'
+ORDER BY Grade DESC
+
+Ellen Opus - 55.
+
+4.  Write a query to find out the average score in the statistics course.  Display the column as "Average Grade".  
+
+SELECT
+AVG(Grade) AS 'Average Grade'
+FROM Courses
+WHERE Course = 'Statistics'
+
+Average Grade - 82.
+
+5.  Write a query to find out who got an A in the calculus course.  Display student names and grades from highest to lowest.
+
+SELECT
+Name,
+Grade
+FROM Courses
+WHERE Course = 'Calculus' AND Grade >= 90
+ORDER BY Grade DESC
+
+Patricia Hills - 93
+Fulton Harris - 92
+
+These are the students who got an A in the calculus course.
