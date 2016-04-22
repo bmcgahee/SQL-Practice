@@ -1,0 +1,63 @@
+//CREATE Accounts table.
+CREATE TABLE Accounts(account_number INT, account_type VARCHAR(20), balance FLOAT, 
+                      PRIMARY KEY(account_number))
+                      ENGINE InnoDB;
+
+//Insert values into Accounts table.
+INSERT INTO Accounts(account_number, account_type, balance)
+VALUES(305402, "Checking", 850.00),
+      (305404, "Savings", 2100.00),
+      (305406, "Retirement", 10000.00)
+
+//Create Billing table.
+CREATE TABLE Billing(bill VARCHAR(50), amount FLOAT)
+ENGINE InnoDB;
+
+//Insert values into Biling table.
+INSERT INTO Billing(bill, amount)
+VALUES("Credit Card", 250.00),
+      ("Electric", 75.00),
+      ("Internet", 90.00),
+      ("Health Insurance", 100.00),
+      ("Rent", 600.00)
+
+//Deposit $2000.00 paycheck into checking account.
+BEGIN;
+UPDATE Accounts SET balance = balance + 2000.00
+WHERE account_number = 305402;
+COMMIT;
+
+//Transfer $300.00 from savings account to checking account.
+BEGIN;
+UPDATE Accounts SET balance = balance - 300.00
+WHERE account_number = 305404;
+UPDATE Accounts SET balance = balance + 300.00
+WHERE account_number = 305402;
+COMMIT;
+
+//Deposit 10% of account balance into retirement account.
+BEGIN;
+UPDATE Accounts SET balance = balance - 0.10 * balance
+WHERE account_number = 305402;
+UPDATE Accounts SET balance = balance + 0.10 * balance
+WHERE account_number = 305406;
+COMMIT;
+
+//Check amounts in all accounts.
+SELECT *
+FROM Accounts;
+
+//Find total amount of money in all accounts.
+SELECT
+Sum(balance)
+FROM Accounts;
+
+//Find total amount in bills.
+SELECT
+Sum(amount)
+FROM Billing;
+
+
+
+
+
