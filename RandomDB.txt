@@ -1,0 +1,32 @@
+CREATE DATABASE Random
+USE Random
+
+CREATE TABLE RandNum(ID INT PRIMARY KEY NOT NULL, Number INT, Calculation INT)
+
+CREATE PROCEDURE InsertRandomNumber(@ID INT,@low INT, @high INT)
+AS
+BEGIN
+DECLARE @a INT
+DECLARE @b INT
+DECLARE @min INT
+DECLARE @max INT
+DECLARE @number INT
+SET @a = @low
+SET @b = @high
+SET @min = FLOOR(RAND() * (@a - @b) + @b)
+SET @max = FLOOR(RAND() * (@b - @a) + @a)
+SET @number = FLOOR(RAND() * (@max - @min) + @min)
+INSERT INTO RandNum(ID, Number)
+VALUES(@ID, @number)
+END
+
+CREATE PROCEDURE AddNumbers(@total INT)
+AS
+BEGIN
+SELECT ID, Number, (ID + Number) AS 'Calculation'
+FROM RandNum
+WHERE ID <= @total
+END
+
+
+
